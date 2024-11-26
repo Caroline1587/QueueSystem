@@ -3,7 +3,7 @@
     <el-card>
       <h2>取号服务</h2>
       <el-button type="primary" @click="takeNumber">取号</el-button>
-      <p>当前排队总人数：{{ totalQueue }}</p>
+      <p>当前排队总人数：{{ waitingQueueCount }}</p>
     </el-card>
     <el-alert
       title="取号后请注意消息通知，到您的号码后请及时到柜台办理业务。"
@@ -14,23 +14,57 @@
 </template>
 
 <script setup lang="ts">
-import { useQueueStore } from "@/stores/queue";
 import { useRouter } from "vue-router";
 import { ref } from "vue";
 
-const queueStore = useQueueStore();
+import { useQueueStore } from "@/stores/queue";
+import { useQueueRecordStore } from "@/stores/queueRecord";
+import { QueueStatus } from "@/config";
+import type { IStudent } from "@/types";
+import { getAccessToken } from "@/utils/auth";
+import { fetchMeData } from "@/api/me";
 const router = useRouter();
-const totalQueue = ref(queueStore.state.queue.length);
+
+const queueStore = useQueueStore();
+const queueRecordsStore = useQueueRecordStore();
+
+const waitingQueueCount = ref(queueStore.waitingQueue.length);
 
 function takeNumber() {
-  const newNumber = queueStore.generateNumber(); // 生成号码逻辑在 Store 中实现
-  queueStore.addStudent({
-    id: Date.now(),
-    name: "学生用户", // 可从登录上下文中获取
-    number: newNumber,
-    status: "waiting",
-    time: new Date().toLocaleString(),
-  });
+  if (!getAccessToken()) {
+    router.push({
+      name: "login",
+    });
+    return;
+  }
+
+  const { id, name } = fetchMeData();
+
+  // 生成排队号码
+  const number = queueStore.generateNumber();
+  const time = new Date().toISOString(); // 使用标准时间格式
+  const status = QueueStatus.WAITING; // 等待状态
+
+  // 创建学生对象
+  const currentStudent: IStudent = {
+    id,
+    name,
+    number,
+    time,
+    status,
+  };
+
+  // 加入quhao队列
+  queueStore.addToQueue(currentStudent);
+
+  //生成取号记录
+  const record = {
+    number,
+    time,
+    status, // 初始状态
+  };
+  queueRecordsStore.addRecord(record); // 添加到记录
+
   router.push({ name: "PersonalQueue" });
 }
 </script>

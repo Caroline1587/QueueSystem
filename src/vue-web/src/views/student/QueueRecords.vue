@@ -12,9 +12,9 @@
 </template>
 
 <script setup lang="ts">
-import { useQueueStore } from "@/stores/queue";
+import { useQueueRecordStore } from "@/stores/queueRecord";
 
-const queueStore = useQueueStore();
+const queueStore = useQueueRecordStore();
 </script>
 
 <style scoped>

@@ -3,11 +3,10 @@ export interface ILoginInfo {
     password: string
   }
   
-//   export interface IUserInfo {
-//     id: number | string
-//     avatar: string
-//     nickname: string
-//   }
+  export interface IUserInfo {
+    id: string
+    name: string
+  }
   
   export interface IAuth {
     userInfo: IUserInfo
@@ -19,10 +18,10 @@ export interface ILoginInfo {
     id: string;
     name: string;
     number: string;
-    status: number;
     time: string;
+    status: number;
   }
   // export type ISatus='waiting' | 'called' | 'cancelled'
-  export enum ISatus{Waiting=0,Called=1,Cancelled=2}
+  // export enum ISatus{Waiting=0,Called=1,Cancelled=2}
   
   
