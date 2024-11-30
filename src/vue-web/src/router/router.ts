@@ -6,8 +6,9 @@ import Login from '../views/Login.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    // name: 'home',
+    // component: HomeView,
+    redirect: '/login'
   },
   {
     path: '/login',

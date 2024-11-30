@@ -71,7 +71,7 @@ function takeNumber() {
 
 <style scoped>
 .take-number {
-  max-width: 600px;
+  /* max-width: 600px; */
   margin: auto;
   padding: 20px;
 }

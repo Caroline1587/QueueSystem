@@ -8,10 +8,10 @@ import { RouterView } from "vue-router";
 </script>
 
 <template>
-  <nav>
+  <!-- <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/login">login</router-link>
-  </nav>
+  </nav> -->
   <router-view />
   <!-- <RouterView /> -->
 </template>
@@ -27,6 +27,8 @@ import { RouterView } from "vue-router";
 // }
 
 #app {
+  height: 100%;
+  width: 100%;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
