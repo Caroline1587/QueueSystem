@@ -1,22 +1,34 @@
 <template>
   <div class="take-number">
-    <el-card>
-      <h2>取号服务</h2>
-      <el-button type="primary" @click="takeNumber">取号</el-button>
-      <p>当前排队总人数：{{ waitingQueueCount }}</p>
-    </el-card>
-    <el-alert
-      title="取号后请注意消息通知，到您的号码后请及时到柜台办理业务。"
-      type="info"
-      show-icon
-    />
+    <div class="queue-number-wrapper">
+      <el-icon><UserFilled /></el-icon>
+      <div class="number-wrapper">当前排队总人数：{{ waitingQueueCount }}人</div>
+    </div>
+    <el-button class="take-number-btn" type="primary" @click="takeNumber" >开始取号</el-button>
+    <div class="warning-title">⚠️注意事项</div>
+    <div class="warning-content">取号后请注意消息通知，到您的号码后请及时到柜台办理业务。</div>
+    <div class="footer-bar">
+      <div class="question">
+        <el-icon><QuestionFilled /></el-icon>
+        常见问题
+      </div>
+      <div class="records">
+        <el-icon><List /></el-icon>
+        取号记录
+      </div>
+
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { useRouter } from "vue-router";
 import { ref } from "vue";
-
+import {
+  UserFilled,
+  QuestionFilled,
+  List
+} from "@element-plus/icons-vue";
 import { useQueueStore } from "@/stores/queue";
 import { useQueueRecordStore } from "@/stores/queueRecord";
 import { QueueStatus } from "@/config";
@@ -69,7 +81,49 @@ function takeNumber() {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.take-number {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  align-items: center;
+  justify-content: center;
+  height: 46vh;
+}
+.queue-number-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #848588;
+  .number-wrapper {
+    margin-left: 5px;
+    font-size: 22px;
+  }
+}
+.take-number-btn {
+  width: 163px;
+  height: 54px;
+  border-radius: 45px;
+  font-size: 18px;
+}
+.warning-title {
+  font-weight: 500;
+  margin-bottom: -14px;
+}
+.footer-bar {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 64px;
+  display: flex;
+  justify-content: space-around;
+  .question, .records {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
 .take-number {
   /* max-width: 600px; */
   margin: auto;
