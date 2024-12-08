@@ -66,6 +66,7 @@ const handleClose = (key: string, keyPath: string[]) => {
   .left-menu {
     display: flex;
     flex-direction: column;
+    height: 100vh;
     .el-radio-group {
       border-right: 1px solid #dcdfe6;
       margin-bottom: 0px !important;
@@ -83,7 +84,7 @@ const handleClose = (key: string, keyPath: string[]) => {
       margin-bottom: 10px;
     }
     .el-menu {
-      height: 100vh;
+      height: 100%;
     }
   }
   .right-content {

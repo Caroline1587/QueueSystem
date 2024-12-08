@@ -31,9 +31,9 @@
       <el-tab-pane label="已过号" name="third"></el-tab-pane>
       <el-tab-pane label="已取消" name="fourth"></el-tab-pane>
       <el-tab-pane label="全部" name="fifth"></el-tab-pane>
-  </el-tabs>
-  <div class="no-more">没有更多了</div>
-  </div>
+    </el-tabs>
+    <div class="no-more">没有更多了</div>
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -116,7 +116,8 @@ const handleClick = (tab: TabsPaneContext, event: Event) => {
         border: none;
         border-radius: 0;
         div {
-          width: calc(100% / 4);
+          padding: 0px;
+          width: calc(100% / 5);
         }
         .el-tabs__item {
           border-left: none;
