@@ -12,12 +12,12 @@ import { QueueStatus } from "@/config";
 // const formattedTime = dayjs(record.time).format("YYYY-MM-DD HH:mm:ss");
 
 interface IFormInfo {
-  name: string;
   id: string;
+  password: string;
 }
 const form = reactive({
-  name: "",
   id: "",
+  password: "",
 });
 
 const formRef = ref<FormInstance>();
@@ -46,7 +46,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
       try {
         // 跳转到个人页面
         router.push({
-          name: "PersonalQueue",
+          name: "me",
           params: {
             id: form.id,
           },
@@ -73,23 +73,21 @@ const submitForm = async (formEl: FormInstance | undefined) => {
       <el-form :model="form" ref="formRef" label-width="100px">
         <el-form-item
           label=" "
-          prop="name"
-          :rules="[{ required: true, message: '请输入姓名', trigger: 'blur' }]"
+          prop="id"
+          :rules="[{ required: true, message: '请输入账号', trigger: 'blur' }]"
         >
-          <el-input v-model="form.name" placeholder="姓名" />
+          <el-input v-model="form.id" placeholder="account" />
         </el-form-item>
-
         <el-form-item
           label=" "
-          prop="id"
-          :rules="[{ required: true, message: '请输入学号', trigger: 'blur' }]"
+          prop="password"
+          :rules="[{ required: true, message: '请输入密码', trigger: 'blur' }]"
         >
-          <el-input v-model="form.id" placeholder="学号" />
+          <el-input v-model="form.password" placeholder="password" />
         </el-form-item>
-
         <el-form-item class="login-btn">
           <el-button type="primary" @click="submitForm(formRef)" size="small"
-            >登录</el-button
+            >login</el-button
           >
         </el-form-item>
       </el-form>
@@ -98,14 +96,21 @@ const submitForm = async (formEl: FormInstance | undefined) => {
   </div>
 </template>
 <style lang="scss" scoped>
-.login-wrapper{
+.login-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
   width: 100vw;
-  background: linear-gradient(180deg, #409eff 0%, #66b1ff 25%, #8cc5ff 50%, #b2d8ff 75%, #d9edff 100%);
+  background: linear-gradient(
+    180deg,
+    #409eff 0%,
+    #66b1ff 25%,
+    #8cc5ff 50%,
+    #b2d8ff 75%,
+    #d9edff 100%
+  );
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
@@ -165,4 +170,5 @@ const submitForm = async (formEl: FormInstance | undefined) => {
 :deep(.el-input__inner::placeholder) {
   font-size: 12px;
 }
-</style>>
+</style>
+>

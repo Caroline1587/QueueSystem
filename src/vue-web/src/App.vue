@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { RouterView } from "vue-router";
+import Layout from "./components/Layout.vue";
 // import TabsView from './views/tabs/TabsView.vue'
 
 // import { fetchTest } from '@/api/test'
@@ -8,11 +9,8 @@ import { RouterView } from "vue-router";
 </script>
 
 <template>
-  <!-- <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/login">login</router-link>
-  </nav> -->
-  <router-view />
+  <Layout />
+
   <!-- <RouterView /> -->
 </template>
 
@@ -27,12 +25,19 @@ import { RouterView } from "vue-router";
 // }
 
 #app {
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
   width: 100%;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+.--flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

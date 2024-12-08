@@ -1,36 +1,43 @@
 <template>
-    <div class="item-wrapper">
-        <el-card  class="number-item" v-for="(item, index) in itemData" :key="index">
-            <template #header>
-                <div class="card-header">
-                <div>排队号: {{ item.queueNumber }}</div>
-                </div>
-            </template>
-            <div class="card-content">
-                <div class="card-content-left">
-                <div class="card-status" :class="item.queueStatus === '已完成' ? 'card-status-finished' : 'card-status-waiting'" >{{ item.queueStatus }}</div>
-                <div class="card-username">{{ item.userName }}</div>
-                </div>
-                <div> > </div>
-            </div>
-            <template #footer>
-                <div class="card-footer">
-                <div>取号时间:{{ item.takeDate }}</div>
-                <div class="detail-info">详细信息</div>
-                </div>
-            </template>
-        </el-card>
-    </div>
-    
+  <div class="item-wrapper">
+    <el-card class="number-item" v-for="(item, index) in itemData" :key="index">
+      <template #header>
+        <div class="card-header">
+          <div>排队号: {{ item.queueNumber }}</div>
+        </div>
+      </template>
+      <div class="card-content">
+        <div class="card-content-left">
+          <div
+            class="card-status"
+            :class="
+              item.queueStatus === '已完成'
+                ? 'card-status-finished'
+                : 'card-status-waiting'
+            "
+          >
+            {{ item.queueStatus }}
+          </div>
+          <div class="card-username">{{ item.userName }}</div>
+        </div>
+        <div>></div>
+      </div>
+      <template #footer>
+        <div class="card-footer">
+          <div>取号时间:{{ item.takeDate }}</div>
+          <div class="detail-info">详细信息</div>
+        </div>
+      </template>
+    </el-card>
+  </div>
 </template>
 <script setup lang="ts">
 interface IProps {
- itemData: any
+  itemData: any;
 }
 defineProps<IProps>();
 </script>
 <style lang="scss" scoped>
-
 :deep(.el-card__header) {
   padding: 10px 10px;
 }

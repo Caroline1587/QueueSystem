@@ -2,24 +2,24 @@
   <div class="take-number">
     <div class="queue-number-wrapper">
       <el-icon><UserFilled /></el-icon>
-      <div class="number-wrapper">当前排队总人数：{{ waitingQueueCount }}人</div>
+      <div class="number-wrapper">
+        当前排队总人数：{{ waitingQueueCount }}人
+      </div>
     </div>
     <div class="take-number-btn" @click="takeNumber">取号</div>
     <div class="warning-title">⚠️注意事项</div>
-    <div class="warning-content">取号后请注意消息通知，到您的号码后请及时到柜台办理业务。</div>
-    <FooterBar />
+    <div class="warning-content">
+      取号后请注意消息通知，到您的号码后请及时到柜台办理业务。
+    </div>
+    <!-- <FooterBar /> -->
   </div>
 </template>
 
 <script setup lang="ts">
 import { useRouter } from "vue-router";
 import { ref } from "vue";
-import {
-  UserFilled,
-  QuestionFilled,
-  List
-} from "@element-plus/icons-vue";
-import FooterBar from '@/components/FooterBar.vue';
+import { UserFilled, QuestionFilled, List } from "@element-plus/icons-vue";
+// import FooterBar from "@/components/FooterNavBar.vue";
 import { useQueueStore } from "@/stores/queue";
 import { useQueueRecordStore } from "@/stores/queueRecord";
 import { QueueStatus } from "@/config";
@@ -40,26 +40,21 @@ function takeNumber() {
   //   });
   //   return;
   // }
-
-  // const { id, name } = fetchMeData();
-
+  // const { id, password } = fetchMeData();
   // // 生成排队号码
   // const number = queueStore.generateNumber();
   // const time = new Date().toISOString(); // 使用标准时间格式
   // const status = QueueStatus.WAITING; // 等待状态
-
   // // 创建学生对象
   // const currentStudent: IStudent = {
   //   id,
-  //   name,
+  //   password,
   //   number,
   //   time,
   //   status,
   // };
-
   // // 加入quhao队列
   // queueStore.addToQueue(currentStudent);
-
   // //生成取号记录
   // const record = {
   //   number,
@@ -67,7 +62,6 @@ function takeNumber() {
   //   status, // 初始状态
   // };
   // queueRecordsStore.addRecord(record); // 添加到记录
-
   // router.push({ name: "PersonalQueue" });
 }
 </script>
@@ -79,9 +73,18 @@ function takeNumber() {
   row-gap: 20px;
   padding: 80px 20px 0px;
   align-items: center;
-  height: 100vh;
+  // height: 100vh;
+  height: 100%;
+
   font-size: 16px;
-  background: linear-gradient(180deg, #409eff 0%, #66b1ff 25%, #8cc5ff 50%, #b2d8ff 75%, #d9edff 100%);
+  background: linear-gradient(
+    180deg,
+    #409eff 0%,
+    #66b1ff 25%,
+    #8cc5ff 50%,
+    #b2d8ff 75%,
+    #d9edff 100%
+  );
 }
 .queue-number-wrapper {
   display: flex;
@@ -108,8 +111,8 @@ function takeNumber() {
   transition: transform 0.2s, box-shadow 0.2s; /* 添加过渡效果 */
 }
 .take-number-btn:active {
-    transform: scale(1.05); /* 鼠标悬停时放大 */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); /* 鼠标悬停时阴影加深 */
+  transform: scale(1.05); /* 鼠标悬停时放大 */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); /* 鼠标悬停时阴影加深 */
 }
 .warning-title {
   font-weight: 500;
