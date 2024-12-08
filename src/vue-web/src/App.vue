@@ -9,9 +9,9 @@ import Layout from "./components/Layout.vue";
 </script>
 
 <template>
-  <Layout />
+  <!-- <Layout /> -->
 
-  <!-- <RouterView /> -->
+  <RouterView />
 </template>
 
 <style lang="scss">
