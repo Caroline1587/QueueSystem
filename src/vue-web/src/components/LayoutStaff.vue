@@ -8,24 +8,24 @@
       @open="handleOpen"
       @close="handleClose"
     >
-      <el-sub-menu index="/page1">
+      <el-menu-item index="/manage/page1">
         <template #title>
           <el-icon><location /></el-icon>
           <span>Navigator One</span>
         </template>
-      </el-sub-menu>
+      </el-menu-item>
 
-      <el-menu-item index="/page2">
+      <el-menu-item index="/manage/page2">
         <el-icon><icon-menu /></el-icon>
         <template #title>Navigator Two</template>
       </el-menu-item>
 
-      <el-menu-item index="/page3" disabled>
+      <el-menu-item index="/manage/page3">
         <el-icon><document /></el-icon>
         <template #title>Navigator Three</template>
       </el-menu-item>
 
-      <el-menu-item index="/page4">
+      <el-menu-item index="/manage/page4">
         <el-icon><setting /></el-icon>
         <template #title>Navigator Four</template>
       </el-menu-item>
