@@ -1,36 +1,42 @@
 <template>
-  <div>
-    <el-menu
-      default-active="active"
-      class="el-menu-vertical-demo"
-      :collapse="isCollapse"
-      router
-      @open="handleOpen"
-      @close="handleClose"
-    >
-      <el-menu-item index="/manage/page1">
-        <template #title>
+  <div class="manage-wrapper">
+    <div class="left-menu">
+      <el-radio-group v-model="isCollapse" class="radio-wrapper">
+        <el-radio-button :value="false">展开</el-radio-button>
+        <el-radio-button :value="true">收起</el-radio-button>
+      </el-radio-group>
+      <el-menu
+        default-active="active"
+        class="el-menu-vertical-demo"
+        :collapse="isCollapse"
+        router
+        @open="handleOpen"
+        @close="handleClose"
+      >
+        <el-menu-item index="/manage/page1">
           <el-icon><location /></el-icon>
-          <span>Navigator One</span>
-        </template>
-      </el-menu-item>
+          <template #title>业务主页</template>
+        </el-menu-item>
 
-      <el-menu-item index="/manage/page2">
-        <el-icon><icon-menu /></el-icon>
-        <template #title>Navigator Two</template>
-      </el-menu-item>
+        <el-menu-item index="/manage/page2">
+          <el-icon><icon-menu /></el-icon>
+          <template #title>全部记录</template>
+        </el-menu-item>
 
-      <el-menu-item index="/manage/page3">
-        <el-icon><document /></el-icon>
-        <template #title>Navigator Three</template>
-      </el-menu-item>
+        <el-menu-item index="/manage/page3">
+          <el-icon><document /></el-icon>
+          <template #title>导出excel</template>
+        </el-menu-item>
 
-      <el-menu-item index="/manage/page4">
-        <el-icon><setting /></el-icon>
-        <template #title>Navigator Four</template>
-      </el-menu-item>
-    </el-menu>
-    <router-view></router-view>
+        <el-menu-item index="/manage/page4">
+          <el-icon><setting /></el-icon>
+          <template #title>队伍配置</template>
+        </el-menu-item>
+      </el-menu>
+    </div>
+    <div class="right-content">
+      <router-view/>
+    </div>
   </div>
 </template>
 
@@ -41,7 +47,7 @@ import {
   Menu as IconMenu,
   Location,
   Setting,
-} from "@element-plus/icons-vue";
+} from '@element-plus/icons-vue'
 
 const active = ref("2");
 
@@ -54,4 +60,36 @@ const handleClose = (key: string, keyPath: string[]) => {
 };
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.manage-wrapper {
+  display: flex;
+  .left-menu {
+    display: flex;
+    flex-direction: column;
+    .el-radio-group {
+      border-right: 1px solid #dcdfe6;
+      margin-bottom: 0px !important;
+      .el-radio-button {
+        width: 100%;
+        :deep(.el-radio-button__inner) {
+          display: block;
+          border-radius: 0 !important;
+        }
+      }
+    }
+    .radio-wrapper {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+    }
+    .el-menu {
+      height: 100vh;
+    }
+  }
+  .right-content {
+    flex: 1;
+    background: #f5f6f8;
+  }
+}
+
+</style>
