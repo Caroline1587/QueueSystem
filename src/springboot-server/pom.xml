@@ -8,7 +8,8 @@
 		<version>3.2.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.classroom.rbac</groupId>
+<!--	<groupId>com.classroom.rbac</groupId>-->
+	<groupId>com.example</groupId>
 	<artifactId>queue-system</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>queue-system</name>
@@ -17,6 +18,21 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
+<!--		WebSocket-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>
+
+		<!--		Redis-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
 
 		<!-- Spring Boot JPA -->
 		<dependency>
