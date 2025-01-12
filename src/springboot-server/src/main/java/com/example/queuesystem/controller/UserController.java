@@ -1,8 +1,8 @@
-package com.example.queue.controller;
+package com.example.queuesystem.controller;
 
-import com.example.queue.model.User;
-import com.example.queue.service.UserService;
-import com.example.queue.util.JwtUtil;
+import com.example.queuesystem.model.User;
+import com.example.queuesystem.service.UserService;
+import com.example.queuesystem.util.JwtUtil;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

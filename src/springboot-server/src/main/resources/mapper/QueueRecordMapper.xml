@@ -1,0 +1,37 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.queuesystem.mapper.QueueRecordMapper">
+
+    <!-- 插入记录 -->
+    <insert id="insertQueueRecord" parameterType="com.example.queuesystem.model.QueueRecord">
+        INSERT INTO queueRecord(queueNumber, createdTime,finishedTime, status, userId)
+        VALUES(#{queueNumber}, #{createdTime}, #{finishedTime}, #{status}, #{userId})
+    </insert>
+
+    <!--根据用户id查询-->
+    <select id="findRecordsByUserId" resultType="com.example.queuesystem.model.QueueRecord">
+        SELECT * FROM queueRecord WHERE userId = #{userId}
+    </select>
+
+    <!-- 根据取号id查询-->
+    <select id="findQueueRecordById" resultType="com.example.demo20230927.Todolist">
+        SELECT * FROM queueRecord WHERE id = #{id}
+    </select>
+
+    <!-- 更新QueueRecord -->
+    <update id="updateQueueRecord" parameterType="com.example.queuesystem.model.QueueRecord">
+        UPDATE queueRecord
+        SET finishedTime = #{finishedTime}, status = #{status}
+        WHERE id = #{id}
+    </update>
+
+    <!-- 删除QueueRecord -->
+    <delete id="deleteQueueRecordById" parameterType="long">
+        DELETE FROM queueRecord WHERE id = #{id}
+    </delete>
+
+    <!-- 查询所有记录-管理员 -->
+    <select id="findAllRecords" resultType="com.example.queuesystem.model.QueueRecord">
+        SELECT * FROM queueRecord
+    </select>
+
+</mapper>

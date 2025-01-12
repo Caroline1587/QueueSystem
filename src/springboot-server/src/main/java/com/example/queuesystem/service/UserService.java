@@ -1,15 +1,13 @@
-package com.example.queue.service;
+package com.example.queuesystem.service;
 
-import com.example.queue.mapper.UserMapper;
-import com.example.queue.model.User;
-import com.example.queue.util.JwtUtil;
-import com.example.queue.util.PasswordEncoder;
+import com.example.queuesystem.mapper.UserMapper;
+import com.example.queuesystem.model.User;
+import com.example.queuesystem.util.JwtUtil;
+import com.example.queuesystem.util.PasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 @Service

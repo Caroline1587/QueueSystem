@@ -1,6 +1,6 @@
-package com.example.queue.mapper;
+package com.example.queuesystem.mapper;
 
-import com.example.queue.model.User;
+import com.example.queuesystem.model.User;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;

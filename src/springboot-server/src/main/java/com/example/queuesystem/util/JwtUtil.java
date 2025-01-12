@@ -1,4 +1,4 @@
-package com.example.queue.util;
+package com.example.queuesystem.util;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;

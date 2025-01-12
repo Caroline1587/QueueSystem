@@ -1,6 +1,6 @@
-package com.example.queue.config;
+package com.example.queuesystem.config;
 
-import com.example.queue.handler.CallNumberHandler;
+import com.example.queuesystem.handler.CallNumberHandler;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;

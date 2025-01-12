@@ -1,4 +1,4 @@
-package com.example.queue.util;
+package com.example.queuesystem.util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

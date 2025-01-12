@@ -1,4 +1,4 @@
-package com.example.queue.model;
+package com.example.queuesystem.model;
 
 import lombok.Data;
 

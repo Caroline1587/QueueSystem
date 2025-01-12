@@ -1,4 +1,4 @@
-package com.example.queue.handler;
+package com.example.queuesystem.handler;
 
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
