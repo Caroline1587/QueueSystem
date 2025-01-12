@@ -10,8 +10,8 @@ export interface IUserState {
 }
 
 const getDefaultUserInfo: () => IUserInfo = () => ({
-  id: "",
-  name: "",
+  username: "",
+  password: "",
 });
 
 export const useUserStore = defineStore("user", () => {
@@ -20,7 +20,7 @@ export const useUserStore = defineStore("user", () => {
     token: "",
   });
   const getUserInfo = computed(() => {
-    if (!state.value.userInfo || !state.value.userInfo.id) {
+    if (!state.value.userInfo || !state.value.userInfo.username) {
       //   state.value.userInfo = $userInfo.value
     }
     return state.value.userInfo;

@@ -3,11 +3,15 @@ package com.example.queue.mapper;
 import com.example.queue.model.User;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+
 @Mapper
 public interface UserMapper {
 
     void insertUser(User user);
     User findUserByUsername(String username);
+
+    List<User> findAllUsers();
 
 //    @Select("SELECT * FROM queue WHERE status = #{status} ORDER BY queue_number ASC")
 //    List<User> findByStatus(@Param("status") Integer status);

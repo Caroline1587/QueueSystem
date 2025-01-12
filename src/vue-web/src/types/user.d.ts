@@ -1,11 +1,16 @@
-export interface ILoginInfo {
-  username: string;
-  password: string;
-}
+// export interface ILoginInfo {
+//   username: string;
+//   password: string;
+// }
+
+// export interface IUserInfo {
+//   id: string;
+//   name: string;
+// }
 
 export interface IUserInfo {
-  id: string;
-  name: string;
+  username: string;
+  password: string;
 }
 
 export interface IAuth {
@@ -21,5 +26,10 @@ export interface IStudent {
   time: string;
   status: number;
 }
+
 // export type ISatus='waiting' | 'called' | 'cancelled'
-// export enum ISatus{Waiting=0,Called=1,Cancelled=2}
+// export enum ISatus {
+//   Waiting = 0,
+//   Called = 1,
+//   Cancelled = 2,
+// }

@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -42,6 +43,9 @@ public class UserService {
         return user;
     }
 
+    public List<User> getAllUsers() {
+        return userMapper.findAllUsers();
+    }
 //    public void updateStudentStatus(Integer id, Integer status) {
 //        studentMapper.updateStatus(id, status);
 //    }

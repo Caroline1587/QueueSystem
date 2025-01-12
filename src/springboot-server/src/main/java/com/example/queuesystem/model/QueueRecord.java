@@ -5,13 +5,14 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class QueueNumber {
+public class QueueRecord {
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer queueNumber;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date created_time;
-    private Integer status;
-    private String userId;
+    private Date createdTime;
+    private Date finishedTime;
+    private Integer status;//0-waiting 1-completed 2-cancelled
+    private Long userId;
 }

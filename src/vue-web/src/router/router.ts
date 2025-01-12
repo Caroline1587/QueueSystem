@@ -2,14 +2,19 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
 // import Home from "../views/student/Home.vue";
 import LayoutVue from "@/components/Layout.vue";
-import Login from "../views/Login.vue";
+import Login from "@/views/Login.vue";
 
 const routes: Array<RouteRecordRaw> = [
+  // {
+  //   path: "/",
+  //   name: "layout",
+  //   component: LayoutVue,
+  //   // redirect: "/take-number",
+  // },
   {
     path: "/",
-    name: "layout",
-    component: LayoutVue,
-    // redirect: "/take-number",
+    // component: Login,
+    redirect: "/login",
   },
   {
     path: "/home",
@@ -24,23 +29,18 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: "/take-number",
-    name: "TakeNumber",
+    name: "takeNumber",
     component: () => import("../views/student/TakeNumber.vue"),
   },
   {
-    path: "/personal/:id",
-    name: "PersonalQueue",
-    component: () => import("../views/student/PersonalQueue.vue"),
+    path: "/queueRecord/:id",
+    name: "QueueDetail",
+    component: () => import("../views/student/QueueDetail.vue"),
   },
   {
-    path: "/records",
-    name: "QueueRecords",
-    component: () => import("../views/student/QueueRecords.vue"),
-  },
-  {
-    path: "/me/:id",
-    name: "me",
-    component: () => import("../views/student/Me.vue"),
+    path: "/myRecords",
+    name: "myRecords",
+    component: () => import("../views/student/MyRecords.vue"),
   },
   {
     path: "/manage",

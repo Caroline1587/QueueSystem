@@ -11,7 +11,7 @@
     <div class="warning-content">
       取号后请注意消息通知，到您的号码后请及时到柜台办理业务。
     </div>
-    <!-- <FooterBar /> -->
+    <FooterBar />
   </div>
 </template>
 
@@ -19,13 +19,14 @@
 import { useRouter } from "vue-router";
 import { ref } from "vue";
 import { UserFilled, QuestionFilled, List } from "@element-plus/icons-vue";
-// import FooterBar from "@/components/FooterNavBar.vue";
+import FooterBar from "@/components/FooterNavBar.vue";
 import { useQueueStore } from "@/stores/queue";
 import { useQueueRecordStore } from "@/stores/queueRecord";
 import { QueueStatus } from "@/config";
-import type { IStudent } from "@/types";
+import type { IRecord } from "@/types";
 import { getAccessToken } from "@/utils/auth";
 import { fetchMeData } from "@/api/me";
+import { ElMessage } from "element-plus";
 const router = useRouter();
 
 const queueStore = useQueueStore();
@@ -40,29 +41,39 @@ function takeNumber() {
   //   });
   //   return;
   // }
-  // const { id, password } = fetchMeData();
-  // // 生成排队号码
-  // const number = queueStore.generateNumber();
-  // const time = new Date().toISOString(); // 使用标准时间格式
-  // const status = QueueStatus.WAITING; // 等待状态
-  // // 创建学生对象
-  // const currentStudent: IStudent = {
-  //   id,
-  //   password,
-  //   number,
-  //   time,
-  //   status,
-  // };
-  // // 加入quhao队列
-  // queueStore.addToQueue(currentStudent);
-  // //生成取号记录
-  // const record = {
-  //   number,
-  //   time,
-  //   status, // 初始状态
-  // };
-  // queueRecordsStore.addRecord(record); // 添加到记录
-  // router.push({ name: "PersonalQueue" });
+  const { id, username, password } = fetchMeData();
+  // 生成排队号码
+  const number = queueStore.generateNumber();
+  const createdTime = new Date().toISOString(); // 使用标准时间格式
+  const status = QueueStatus.WAITING; // 等待状态
+  const finishedTime = null;
+  const rid = 111;
+  // 创建取号对象
+  // id应通过后端获取
+  const currentRecord = {
+    id: rid,
+    number,
+    status,
+    createdTime,
+    finishedTime,
+    userName: username,
+    userId: id,
+  };
+  // 加入quhao队列
+  queueStore.addToQueue(currentRecord);
+  queueRecordsStore.addRecord(currentRecord); // 添加到个人记录
+  ElMessage({
+    message: "取号成功.",
+    type: "success",
+  });
+  setTimeout(() => {
+    router.push({
+      name: "QueueDetail",
+      params: {
+        id: rid,
+      },
+    });
+  }, 1000);
 }
 </script>
 

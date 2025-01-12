@@ -24,7 +24,7 @@ service.interceptors.request.use(
 );
 
 service.interceptors.response.use(
-  (response: { data: any; }) => {
+  (response: { data: any }) => {
     // 对响应数据进行处理
     // ...
 

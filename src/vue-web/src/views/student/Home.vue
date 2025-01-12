@@ -1,13 +1,12 @@
 <template>
-    <div>
-
-    </div>
+  <div class="home-wrapper">
+    <router-view></router-view>
+    <FooterBar />
+  </div>
 </template>
 
 <script setup>
-import
+import FooterBar from "@/components/FooterNavBar.vue";
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

@@ -1,22 +1,27 @@
 <template>
   <div class="item-wrapper">
-    <el-card class="number-item" v-for="(item, index) in itemData" :key="index">
+    <el-card
+      @click="(e: any)=>handleClick(e,item)"
+      class="number-item"
+      v-for="(item, index) in itemData"
+      :key="index"
+    >
       <template #header>
         <div class="card-header">
-          <div>排队号: {{ item.queueNumber }}</div>
+          <div>排队号: {{ item.number }}</div>
         </div>
       </template>
       <div class="card-content">
         <div class="card-content-left">
           <div
             class="card-status"
-            :class="
-              item.queueStatus === '已完成'
-                ? 'card-status-finished'
-                : 'card-status-waiting'
-            "
+            :class="{
+              'card-status-cancelled': item.status === '已完结',
+              'card-status-finished': item.status === '办理中',
+              'card-status-waiting': item.status === '等待中',
+            }"
           >
-            {{ item.queueStatus }}
+            {{ item.status }}
           </div>
           <div class="card-username">{{ item.userName }}</div>
         </div>
@@ -24,7 +29,7 @@
       </div>
       <template #footer>
         <div class="card-footer">
-          <div>取号时间:{{ item.takeDate }}</div>
+          <div>取号时间:{{ item.createdTime }}</div>
           <div class="detail-info">详细信息</div>
         </div>
       </template>
@@ -32,10 +37,32 @@
   </div>
 </template>
 <script setup lang="ts">
+import { useRouter } from "vue-router";
+
+import { QueueStatus } from "@/config";
+import { IRecord } from "@/types";
+
 interface IProps {
   itemData: any;
 }
-defineProps<IProps>();
+const props = defineProps<IProps>();
+
+props.itemData.map((item, index: number) => {
+  if (item.status == QueueStatus.WAITING) item.status = "等待中";
+  else if (item.status == QueueStatus.PROCESSING) item.status = "办理中";
+  else if (item.status == QueueStatus.FINISHED) item.status = "已完结";
+});
+
+const router = useRouter();
+const handleClick = (e, item) => {
+  console.log("点击详情：", e.target);
+  router.push({
+    name: "QueueDetail",
+    params: {
+      id: item.id,
+    },
+  });
+};
 </script>
 <style lang="scss" scoped>
 :deep(.el-card__header) {
@@ -71,11 +98,14 @@ defineProps<IProps>();
           color: white;
           margin-right: 5px;
         }
+        .card-status-waiting {
+          background: #8ea56e;
+        }
         .card-status-finished {
           background: #8bceee;
         }
-        .card-status-waiting {
-          background: #8ea56e;
+        .card-status-cancelled {
+          background: lightgray;
         }
       }
     }

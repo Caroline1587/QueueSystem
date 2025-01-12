@@ -44,9 +44,9 @@ const submitForm = async (formEl: FormInstance | undefined) => {
     if (valid) {
       console.log("submit!");
       try {
-        // 跳转到个人页面
+        // 跳转到取号页面
         router.push({
-          name: "me",
+          name: "takeNumber",
           params: {
             id: form.id,
           },
